@@ -3,7 +3,37 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Greet from "./components/Greet.vue";
 </script>
-<script type="module" src="./assets/browser/test.ts"></script>
+<script lang="ts">
+import { WebviewWindow } from "@tauri-apps/api/window" //引入打开窗口功能
+export default {
+  name: "Index",
+  data(): Record<string, unknown> {
+    return {};
+  },
+  methods: {
+    newwin(): void {
+      const webview: WebviewWindow = new WebviewWindow("cree", {
+        url: "https://aaca.eu.org",
+        // 可自行添加属性配置     窗口配置
+        //center:true,
+        //decorations:false
+      })
+      webview.once("tauri://created", function (): void {
+        // webview window successfully created
+        // 窗口创建成功 打印1
+        console.log(1);
+      });
+      webview.once("tauri://error", function (e: Error): void {
+        // an error happened creating the webview window
+          // 窗口创建失败 打印2
+        console.log(2);
+      });
+      // const testWindow: WebviewWindow = WebviewWindow.getByLabel("test");
+      // testWindow.show();
+    },
+  },
+}
+</script>
 
 <template>
   <div class="container">
@@ -36,7 +66,7 @@ import Greet from "./components/Greet.vue";
 
     <Greet />
     <div class="index">
-      <button @click="Win">打开新窗口</button>
+      <button @click="newwin()">打开新窗口</button>
     </div>
   </div>
 </template>
