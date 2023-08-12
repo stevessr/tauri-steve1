@@ -3,6 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Greet from "./components/Greet.vue";
 </script>
+<script type="module" src="./assets/browser/test.ts"></script>
 
 <template>
   <div class="container">
@@ -35,7 +36,7 @@ import Greet from "./components/Greet.vue";
 
     <Greet />
     <div class="index">
-      <button click="openNewWindow()">打开新窗口</button>
+      <button @click="Win">打开新窗口</button>
     </div>
   </div>
 </template>
