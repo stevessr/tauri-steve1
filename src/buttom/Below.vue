@@ -19,6 +19,7 @@ export default {
             });
             webview.once('tauri://error', function (e) {
                 // an error happened creating the webview window
+                console.log(e);
             });
             // emit an event to the backend
         },

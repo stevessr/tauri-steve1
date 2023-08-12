@@ -12,15 +12,14 @@ export default {
                 url: weburl,
                 title: title
             });
-            console.log(weburl);
-            console.log(description);
-            console.log(title);
+            appWindow;
             webview.show();
             webview.once('tauri://created', function () {
                 // webview window successfully created
             });
             webview.once('tauri://error', function (e) {
                 // an error happened creating the webview window
+                console.log(e);
             });
             // emit an event to the backend
         },
@@ -158,10 +157,6 @@ button.small-button {
         <el-divider></el-divider>
         <el-divider direction="vertical"></el-divider>
         <el-divider direction="vertical"></el-divider>
-        <el-drawer title="联系我" :visible.sync="drawer" :direction="direction" :before-close="handleClose">
-            <p class='info'>
-            </p>
-        </el-drawer>
         <div>
             <button class='small-button'
                 @click="Win('google-mirror', 'https://caddy.firsts1.repl.co/', 'google mirror')">google自建反代</button>
@@ -191,14 +186,11 @@ button.small-button {
         </div>
         <div>
             <button class='small-button' @click="Win('age-anime', 'https://www.agemys.org', 'age动漫')">age动漫</button>
-            <button
-                class='small-button'
-                @click="Win('geekgpt', 'https://chat.geekgpt.org/', 'geekgpt')">geekgpt</button>
-                <button
-                class='small-button'
+            <button class='small-button' @click="Win('geekgpt', 'https://chat.geekgpt.org/', 'geekgpt')">geekgpt</button>
+            <button class='small-button'
                 @click="Win('chat-shared2', 'https://chat-shared2.zhile.io/shared.html', 'chat-shared2')">chat-shared2</button>
-                <button class='small-button' @click="Win('优选一些好网址', 'https://c.aalib.net/', '优选一些好网址')">优选一些好网址</button>
-                
+            <button class='small-button' @click="Win('优选一些好网址', 'https://c.aalib.net/', '优选一些好网址')">优选一些好网址</button>
+
         </div>
         <div>
             <button class='small-button'
