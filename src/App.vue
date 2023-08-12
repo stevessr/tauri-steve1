@@ -28,8 +28,9 @@ export default {
           // 窗口创建失败 打印2
         console.log(2);
       });
-      // const testWindow: WebviewWindow = WebviewWindow.getByLabel("test");
-      // testWindow.show();
+
+      const testWindow: WebviewWindow = WebviewWindow.getByLabel("cree");
+      testWindow.show();
     },
   },
 }
