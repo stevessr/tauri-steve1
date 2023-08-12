@@ -8,11 +8,18 @@ export default {
     },
     methods: {
         Win() {
-            //这个appWindow.hide();是实现登录之后隐藏（关闭）登录界面，然后再显示新打开的test界面
-            //appWindow.hide();
-            const testWindow = WebviewWindow.getByLabel("test");//这里就是获取label
-            testWindow.show();
-            appWindow.hide();
+            const webview = new WebviewWindow('百度', {
+                url: 'https://www.baidu.com',
+                title: '百度一下'
+            });
+            webview.show();
+            webview.once('tauri://created', function () {
+                // webview window successfully created
+            });
+            webview.once('tauri://error', function (e) {
+                // an error happened creating the webview window
+            });
+            // emit an event to the backend
         },
     },
 }
@@ -20,5 +27,5 @@ export default {
 </script>
 
 <template>
-    <button @click="count++">You clicked me {{ count }} times.</button>
+    <button @click="Win()">打开S新窗口</button>
 </template>

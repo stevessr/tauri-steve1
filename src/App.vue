@@ -2,7 +2,7 @@
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import Greet from "./components/Greet.vue";
-import Win from "./components/Bottoms.vue";
+import Buttoms from "./components/Bottoms.vue";
 </script>
 <template>
   <div class="container">
@@ -34,6 +34,7 @@ import Win from "./components/Bottoms.vue";
     </p>
 
     <Greet />
+    <Buttoms />
     <div class="index">
       <button @click="Win()">打开新窗口</button>
     </div>
