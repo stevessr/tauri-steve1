@@ -80,9 +80,10 @@ export default {
         <button @click="Win('geogebra', 'https://www.geogebra.org/download', 'geogebra')">打开geogebra</button>
     -->
     <div>
-        <button @click="Win('bilibili', 'https://www.bilibili.com', '哔哩哔哩')">打开哔哩哔哩</button>
-        <button @click="Win('bilibili', 'https://www.bilibili.com', '哔哩哔哩')">打开哔哩哔哩</button>
-        <button @click="Win('bilibili', 'https://www.bilibili.com', '哔哩哔哩')">打开哔哩哔哩</button>
+        <button @click="Win('bilibili主页', 'https://www.bilibili.com', '哔哩哔哩主页')">哔哩哔哩</button>
+        <button @click="Win('bilibili动态', 'https://t.bilibili.com', '哔哩哔哩动态')">哔哩哔哩动态</button>
+        <button @click="Win('bilibili搜索', 'https://search.bilibili.com', '哔哩哔哩搜索🔍')">哔哩哔哩搜索</button>
+        <button @click="Win('bilibili账户', 'https://account.bilibili.com', '哔哩哔哩账户中心')">哔哩哔哩账户中心</button>
         <button @click="Win('bilibili', 'https://www.bilibili.com', '哔哩哔哩')">打开哔哩哔哩</button>
     </div>
 

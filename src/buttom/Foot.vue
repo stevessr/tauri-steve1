@@ -159,6 +159,10 @@ button.small-button {
         <el-divider direction="vertical"></el-divider>
         <div>
             <button class='small-button'
+                @click="Win('Vue', 'https://vuejs.org/', 'Vue')">Vue</button>
+        </div>
+        <div>
+            <button class='small-button'
                 @click="Win('google-mirror', 'https://caddy.firsts1.repl.co/', 'google mirror')">google自建反代</button>
             <button class='small-button'
                 @click="Win('谷歌地图', 'https://caddy.firsts1.repl.co/maps', '谷歌地图')">谷歌地图自建反代</button>

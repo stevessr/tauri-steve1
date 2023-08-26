@@ -94,6 +94,10 @@
         "title": "test",
         "url": "https://aaca.eu.org"
       }
-    ]
+    ],
+    "systemTray": {
+      "iconPath": "icons/icon.png",
+      "iconAsTemplate": true
+    }
   }
 }
