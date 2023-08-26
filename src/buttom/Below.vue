@@ -31,6 +31,7 @@ export default {
         <button @click="Win('baidu', 'https://www.baidu.com', '百度🔍')">百度一下🔍</button>
         <button @click="Win('bing', 'https://www.bing.com', '必应🔍')">必应搜索🔍</button>
         <button @click="Win('sougo', 'https://www.sogou.com/', '搜狗🔍')">搜狗搜索🔍</button>
+        <button @click="Win('sougo', '/self', '🔍')">🔍</button>
     </div>
     <div>
         <button @click="Win('百度翻译', 'https://fanyi.baidu.com', '百度翻译')">百度翻译</button><button
