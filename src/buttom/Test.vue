@@ -6,9 +6,6 @@ export default {
   created() {
   },
   methods: {
-    AskForMessage() {
-      return message2;
-    }
   }
 }
 </script>
@@ -26,6 +23,5 @@ import { message } from '@tauri-apps/api/dialog';
     <summary>自定义</summary>
     <h1>Message is: {{ message2 }} </h1>
     <input v-model="message2" type="value" placeholder="edit me" />
-    <textarea v-model="message2" cols="30" rows="10"> </textarea>
   </details>
 </template>
