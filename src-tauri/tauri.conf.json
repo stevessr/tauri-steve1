@@ -84,20 +84,7 @@
         "title": "steve",
         "width": 800,
         "height": 600
-      },
-      {
-        "width": 400,
-        "height": 200,
-        "resizable": true,
-        "visible": false,
-        "label": "test",
-        "title": "test",
-        "url": "https://aaca.eu.org"
       }
-    ],
-    "systemTray": {
-      "iconPath": "icons/icon.png",
-      "iconAsTemplate": true
-    }
+    ]
   }
 }

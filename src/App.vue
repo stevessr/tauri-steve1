@@ -4,6 +4,7 @@
 import Greet from "./components/Greet.vue";
 import Foot from "./buttom/Foot.vue";
 import Below from "./buttom/Below.vue";
+import Test from "./buttom/Test.vue";
 </script>
 <template>
   <div class="container">
@@ -35,12 +36,17 @@ import Below from "./buttom/Below.vue";
     </p>
 
     <Greet />
+    <div>
+      <Test />
+    </div>
     <div class="index">
       <Below />
     </div>
-    
+
   </div>
-  <div class='footer'><Foot /></div>
+  <div class='footer'>
+    <Foot />
+  </div>
 </template>
 
 <style scoped>
@@ -50,5 +56,4 @@ import Below from "./buttom/Below.vue";
 
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #249b73);
-}
-</style>
+}</style>

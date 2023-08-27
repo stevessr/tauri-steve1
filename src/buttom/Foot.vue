@@ -2,7 +2,7 @@
 import { appWindow, WebviewWindow } from "@tauri-apps/api/window";//引入
 
 export default {
-    name: "index",
+    name: "Foot",
     data() {
         return {};
     },
@@ -157,9 +157,9 @@ button.small-button {
         <el-divider></el-divider>
         <el-divider direction="vertical"></el-divider>
         <el-divider direction="vertical"></el-divider>
+
         <div>
-            <button class='small-button'
-                @click="Win('Vue', 'https://vuejs.org/', 'Vue')">Vue</button>
+            <button class='small-button' @click="Win('Vue', 'https://vuejs.org/', 'Vue')">Vue</button>
         </div>
         <div>
             <button class='small-button'
@@ -204,7 +204,6 @@ button.small-button {
             <button class='small-button'
                 @click="Win('自建adguard', 'https://adguard--alis-st.repl.co/', '自建adguard')">自建adguard</button>
         </div>
-
     </div>
 </template>
 
