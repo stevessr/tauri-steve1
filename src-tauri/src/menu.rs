@@ -18,5 +18,11 @@ pub fn init(context: &Context<EmbeddedAssets>) -> Menu {
             .add_item(CustomMenuItem::new("hide", "Hide"))
             .add_submenu(submenu),
     );
-    Menu::new().add_submenu(app_menu)
+    let self_menu = Submenu::new(
+        "自定义菜单",
+        // MenuItem::About 为原生菜单
+        Menu::new()
+            .add_native_item(MenuItem::Copy)
+    );
+    Menu::new().add_submenu(app_menu).add_submenu(self_menu)
 }

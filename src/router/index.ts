@@ -8,7 +8,7 @@ const routes = [
     {
         path: '/self',
         name: 'self',
-        component: () => import('/src/self/Self.vue')
+        component: () => import('/src/App.vue')
     }
 ]
 const router = createRouter({
