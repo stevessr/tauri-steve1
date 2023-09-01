@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-var message2: string = "";
+var message2: string = "void";
 console.log(message2);
 </script>
 <!--
