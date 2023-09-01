@@ -2,6 +2,7 @@
 export default {
   name: "Test",
   data() {
+    return { message2 };
   },
   created() {
   },
@@ -23,5 +24,6 @@ import { message } from '@tauri-apps/api/dialog';
     <summary>自定义</summary>
     <h1>Message is: {{ message2 }} </h1>
     <input v-model="message2" type="value" placeholder="edit me" />
+    <h1>Message is: {{ message2 }} </h1>
   </details>
 </template>
