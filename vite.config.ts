@@ -1,9 +1,24 @@
 import { defineConfig } from "vite";
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import viteCompression from 'vite-plugin-compression';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => ({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    viteCompression({
+      algorithm: 'brotliCompress', // 启动brotli压缩
+    }),
+  ],
 
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   // prevent vite from obscuring rust errors
@@ -23,5 +38,6 @@ export default defineConfig(async () => ({
     minify: !process.env.TAURI_DEBUG ? "esbuild" : false,
     // produce sourcemaps for debug builds
     sourcemap: !!process.env.TAURI_DEBUG,
+    cssCodeSplit: true,
   },
 }));
