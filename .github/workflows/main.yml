@@ -49,20 +49,16 @@ jobs:
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
- 
+      - uses: pnpm/action-setup@v2
+          with:
+            version: latest
+            
      # 安装 Node.js
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: latest
-      
-      #安装 pnpm
-      - name: Setup pnpm
-        steps:
-        - uses: pnpm/action-setup@v2
-          with:
-            version: latest
- 
+          node-version: latest  
+
       # 安装 Rust
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
