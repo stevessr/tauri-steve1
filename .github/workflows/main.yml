@@ -25,7 +25,7 @@ jobs:
       # 根据查询到的版本号创建 release
       - name: Create Release  
         id: create_release
-        uses: actions/create-release@v2
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
