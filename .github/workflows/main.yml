@@ -14,8 +14,6 @@ jobs:
   # 任务：创建 release 版本
   create-release:
     runs-on: ubuntu-latest
-    outputs:
-      RELEASE_UPLOAD_ID: ${{ steps.create_release.outputs.id }}
     steps:
       - uses: actions/checkout@v2
       # 查询版本号（tag）
@@ -24,9 +22,8 @@ jobs:
         shell: bash
         run: |
           echo "using version tag ${GITHUB_REF:10}"
-          echo ::set-output name=version::"${GITHUB_REF:10}"
       # 根据查询到的版本号创建 release
-      - name: Create Release
+      - name: Create Release  
         id: create_release
         uses: actions/create-release@v2
         env:
@@ -50,8 +47,8 @@ jobs:
 
       # 安装 pnpm
       - name: Setup pnpm
-           uses:pnpm/action-setup@v2
-            with:version:latest
+           uses: pnpm/action-setup@v2
+            with: version: latest
 
      # 安装 Node.js
       - name: Setup node
@@ -83,11 +80,6 @@ jobs:
       # 可选，如果需要使用 rsw 构建 wasm，则安装 rsw
       - name: Install rsw
         run: cargo install rsw
- 
-      # 获取 pnpm 缓存路径
-      - name: Get pnpm cache directory path
-        id: pnpm-cache-dir-path
-        run: echo "::set-output name=dir::$(pnpm config get cacheFolder)"
  
       # 使用  缓存
       - name: Pnpm and cargo cache
