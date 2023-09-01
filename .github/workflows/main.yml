@@ -30,11 +30,11 @@ jobs:
       # 根据查询到的版本号创建 release
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          tag_name: 'prelease'
+          tag_name: 'prelease $(date)'
           release_name: 'app prelease'
           body: 'See the assets to download this version and install.'
   
@@ -52,9 +52,16 @@ jobs:
  
      # 安装 Node.js
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 16
+          node-version: latest
+      
+      #安装 pnpm
+      - name: Setup pnpm
+        steps:
+        - uses: pnpm/action-setup@v2
+          with:
+            version: latest
  
       # 安装 Rust
       - name: Install Rust stable
