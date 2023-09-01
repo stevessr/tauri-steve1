@@ -3,6 +3,7 @@ name: Release CI
  
 # 指定此工作流的触发器
 on:
+  workflow_dispatch:
   push:
     # 匹配特定标签 (refs/tags)
     tags:
