@@ -25,6 +25,8 @@ jobs:
       # 根据查询到的版本号创建 release
       - name: Recreate release
         uses: GongT/actions-recreate-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           tag_name: action release
           release_name: nightly
