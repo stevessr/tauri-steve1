@@ -28,8 +28,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          tag_name: action release
-          release_name: nightly
+          tag_name: "action release"
+          release_name: "nightly"
           body: "See the assets to download this version and install."
 
   # 编译 Tauri
