@@ -34,8 +34,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: '${{ steps.get_version.outputs.VERSION }}'
-          release_name: 'app ${{ steps.get_version.outputs.VERSION }}'
+          tag_name: 'prelease'
+          release_name: 'app prelease'
           body: 'See the assets to download this version and install.'
   
   # 编译 Tauri
@@ -81,25 +81,25 @@ jobs:
       - name: Install rsw
         run: cargo install rsw
  
-      # 获取 yarn 缓存路径
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+      # 获取 pnpm 缓存路径
+      - name: Get pnpm cache directory path
+        id: pnpm-cache-dir-path
+        run: echo "::set-output name=dir::$(pnpm config get cacheFolder)"
  
-      # 使用 yarn 缓存
-      - name: Yarn cache
+      # 使用 pnpm 缓存
+      - name: Pnpm cache
         uses: actions/cache@v2
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        id: pnpm-cache # use this to check for `cache-hit` (`steps.pnpm-cache.outputs.cache-hit != 'true'`)
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          path: ${{ steps.pnpm-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm.lock') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-pnpm-
  
       # 安装依赖执行构建，以及推送 github release
       - name: Install app dependencies and build it
-      # 这里的pubhome要修改为你package.json里面配置的编译命令
-        run: yarn && yarn pubhome
+      # 这里的release要修改为你package.json里面配置的编译命令
+        run: pnpm install && pnpm build && pnpm release
       - uses: tauri-apps/tauri-action@v0.3
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
