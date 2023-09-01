@@ -1,14 +1,14 @@
 # 可选，将显示在 GitHub 存储库的“操作”选项卡中的工作流名称
 name: Release CI
- 
+
 # 指定此工作流的触发器
 on:
   workflow_dispatch:
   push:
-      # 匹配特定标签 (refs/tags)
-      tags:
-        - 'v*' # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
- 
+    # 匹配特定标签 (refs/tags)
+    tags:
+      - "v*" # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
+
 # 需要运行的作业组合
 jobs:
   # 任务：创建 release 版本
@@ -23,16 +23,13 @@ jobs:
         run: |
           echo "using version tag ${GITHUB_REF:10}"
       # 根据查询到的版本号创建 release
-      - name: Create Release  
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+      - name: Recreate release
+        uses: GongT/actions-recreate-release@v1
         with:
-          tag_name: 'prelease $(date)'
-          release_name: 'app prelease'
-          body: 'See the assets to download this version and install.'
-  
+          tag_name: action release
+          release_name: nightly
+          body: "See the assets to download this version and install."
+
   # 编译 Tauri
   build-tauri:
     needs: create-release
@@ -40,7 +37,7 @@ jobs:
       fail-fast: false
       matrix:
         platform: [macos-latest, ubuntu-latest, windows-latest]
- 
+
     runs-on: ${{ matrix.platform }}
     steps:
       - uses: actions/checkout@v2
@@ -48,40 +45,40 @@ jobs:
       # 安装 pnpm
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.4.0
-        with: 
+        with:
           version: latest
 
-     # 安装 Node.js
+      # 安装 Node.js
       - name: Setup node
         uses: actions/setup-node@v2
         with:
-          node-version: latest  
+          node-version: latest
 
       # 安装 Rust
       - name: Install Rust stable
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
- 
+
       # 使用 Rust 缓存，加快安装速度
       - uses: Swatinem/rust-cache@v1
- 
+
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
- 
+
       # 可选，如果需要将 Rust 编译为 wasm，则安装 wasm-pack
       - uses: jetli/wasm-pack-action@v0.3.0
         with:
           # Optional version of wasm-pack to install(eg. 'v0.9.1', 'latest')
           version: v0.9.1
- 
+
       # 可选，如果需要使用 rsw 构建 wasm，则安装 rsw
       - name: Install rsw
         run: cargo install rsw
- 
+
       # 使用  缓存
       - name: Pnpm and cargo cache
         uses: actions/cache@v2
@@ -94,10 +91,10 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm.lock') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
- 
+
       # 安装依赖执行构建，以及推送 github release
       - name: Install app dependencies and build it
-      # 这里的release要修改为你package.json里面配置的编译命令
+        # 这里的release要修改为你package.json里面配置的编译命令
         run: pnpm install && pnpm build && pnpm release
       - uses: tauri-apps/tauri-action@v0.3
         env:
