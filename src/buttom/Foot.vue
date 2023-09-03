@@ -24,8 +24,22 @@ const activeName = ref(['1']);
         <el-divider direction="vertical"></el-divider>
         <el-collapse v-model="activeName" class="small-buttom" accordion>
 
-            <el-collapse-item title="Vue" name="Vue">
+            <el-collapse-item title="前端" name="frontend">
                 <button class='small-button' @click="CreateWindows('Vue', 'https://vuejs.org/', 'Vue')">Vue</button>
+                <button class='small-button'
+                    @click="CreateWindows('Nextjs', 'https://nextjs.org/', 'Nextjs')">Nextjs</button>
+                <button class='small-button'
+                    @click="CreateWindows('Reactjs', 'https://react.dev/', 'Reactjs')">Reactjs</button>
+                <button class='small-button'
+                    @click="CreateWindows('Soildjs', 'https://www.solidjs.com/', 'Soildjs')">Soildjs</button>
+                <button class='small-button'
+                    @click="CreateWindows('Svelte', 'https://svelte.dev/', 'Svelte')">Svelte</button>
+                <button class='small-button'
+                    @click="CreateWindows('Expressjs', 'https://expressjs.com/', 'Expressjs')">Expressjs</button>
+                <button class='small-button'
+                    @click="CreateWindows('Angular', 'https://angular.io/', 'Angular')">Angular</button>
+                <button class='small-button'
+                    @click="CreateWindows('typescriptlang', 'https://www.typescriptlang.org/', 'typescriptlang')">typescriptlang</button>
             </el-collapse-item>
 
             <el-collapse-item title="mirrors" name="mirror">
@@ -37,13 +51,15 @@ const activeName = ref(['1']);
                     @click="CreateWindows('中文维基', 'https://pg.stevessr-team.repl.co/wiki/Wikipedia:首页', '中文维基')">中文维基自建反代</button>
             </el-collapse-item>
 
-            <el-collapse-item title="nasportal" name="nasportal">
+            <el-collapse-item title="外部静态托管自建" name="nasportal">
                 <button class='small-button'
                     @click="CreateWindows('uptimerobot', 'https://stats.uptimerobot.com/jW0Z0Sljwn', 'uptimerobot')">uptimerobot监视器</button>
                 <button class='small-button'
                     @click="CreateWindows('nasportal-4everland', 'https://nasportal.4everland.app/', 'nasportal 4everland')">nasportal-4everland</button>
                 <button class='small-button'
                     @click="CreateWindows('nasportal-netlify', 'https://steve-ssr.netlify.app/', 'nasportal netlify')">nasportal-netlify</button>
+                <button class='small-button'
+                    @click="CreateWindows('stevessr-web', 'https://status.aaca.eu.org/', 'stevessr站点监控')">stevessr站点监控</button>
             </el-collapse-item>
 
             <el-collapse-item title="监视器" name="watchers">
@@ -75,10 +91,11 @@ const activeName = ref(['1']);
                     @click="CreateWindows('自建halo', 'https://halo.stevessr-group.repl.co/', '自建halo')">自建halo</button>
                 <button class='small-button'
                     @click="CreateWindows('自建adguard', 'https://adguard--alis-st.repl.co/', '自建adguard')">自建adguard</button>
+                <button class='small-button'
+                    @click="CreateWindows('imsyyHot', 'https://dailyhotapi.alis-st.repl.co/', '自建imsyy热榜')">自建imsyy热榜</button>
             </el-collapse-item>
 
-        </el-collapse>
-    </div>
-</template>
+    </el-collapse>
+</div></template>
 
 <style></style>
